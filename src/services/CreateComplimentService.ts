@@ -1,4 +1,3 @@
-import { hash } from "bcryptjs";
 import { getCustomRepository } from "typeorm";
 
 import { ComplimentsRepository } from "../repositories/ComplimentsRepository";
