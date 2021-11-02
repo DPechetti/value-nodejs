@@ -5,7 +5,7 @@ import express from 'express';
 import 'express-async-errors'
 import './database'
 import { router } from "./routes";
-import { errorHandler } from "./middlewares/ErrorMiddleware";
+import { errorHandler } from "./middlewares/errorMiddleware";
 
 const port = 3333;
 const app = express();
