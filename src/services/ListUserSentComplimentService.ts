@@ -6,7 +6,10 @@ class ListUserSentComplimentService {
   async execute(user_sender: string) {
     const complimentsRepository = getCustomRepository(ComplimentsRepository)
 
-    const compliments = await complimentsRepository.find({ where: { user_sender }})
+    const compliments = await complimentsRepository.find({ 
+      where: { user_sender }, 
+      relations: ["userSender", "userReceiver", "tag"]
+    })
 
     return compliments
   }
