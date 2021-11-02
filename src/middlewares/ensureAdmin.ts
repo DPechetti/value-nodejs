@@ -1,9 +1,16 @@
 import { NextFunction, Request, Response } from "express";
+import { getCustomRepository } from "typeorm";
 
-export function ensureAdmin(req: Request, res: Response, next: NextFunction) {
-  const admin = true // hardcoded for now
+import { UsersRepository } from "../repositories/UsersRepository";
+
+export async function ensureAdmin(req: Request, res: Response, next: NextFunction) {
+  const { user_id } = req
+
+  const usersRepository = getCustomRepository(UsersRepository)
+
+  const { admin } = await usersRepository.findOne(user_id)
 
   if (admin) return next()
 
-  return res.status(401).json({ error: 'Unauthorized' })
+  return res.status(401).json({ error: 'You can\'t create a tag young Padawan' })
 }
