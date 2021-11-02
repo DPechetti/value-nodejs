@@ -9,7 +9,7 @@ class CreateTagService {
 
     const tagFound = await tagsRepository.findOne({ name })
 
-    if (tagFound) throw new Error("tag already exists")
+    if (tagFound) throw new Error("Tag already exists")
 
     const tag = tagsRepository.create({ name })
 
